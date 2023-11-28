@@ -84,3 +84,41 @@ function replicate(times, number) {
 
   return [number].concat(replicate(times - 1, number));
 }
+
+function fibs(number) {
+  let arr = [0, 1];
+  for (let index = 2; index <= number; index++) {
+    arr[index] = arr[index - 1] + arr[index - 2];
+  }
+  return arr;
+}
+
+function fibsRecursive(n) {
+  if (n == 0) {
+    console.log("enter a valid number");
+  }
+  if (n == 1) {
+    return [0];
+  }
+  if (n == 2) {
+    return [0, 1];
+  } else {
+    [
+      ...fibsRecursive(n - 1),
+      fibsRecursive(n - 1)[n - 2] + fibsRecursive(n - 1)[n - 3],
+    ];
+  }
+}
+
+const fibsRecurse = (n) => {
+  return n <= 0
+    ? "Please enter a valid number of elements to be given an answer."
+    : n === 1
+    ? [0]
+    : n === 2
+    ? [0, 1]
+    : [
+        ...fibsRecurse(n - 1),
+        fibsRecurse(n - 1)[n - 2] + fibsRecurse(n - 1)[n - 3],
+      ];
+};
